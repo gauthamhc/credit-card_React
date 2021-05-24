@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #d3e9fc;
+  font-family: "Poppins", sans-serif;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.credit-card {
+  margin: 0 auto;
+  width: 700px;
+  margin-top: 4rem;
+  position: relative;
+}
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-image: url("../images/6.jpeg");
+  background-repeat: none;
+  object-fit: cover;
+  width: 400px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem;
+  color: azure;
+  font-weight: 200;
+  letter-spacing: 1px;
+  border-radius: 10px;
+
+  /* align-items: space-around; */
+}
+img {
+  width: 60px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.card-number {
+  padding: 1rem;
+}
+.card-number input {
+  width: 100%;
+  padding: 0.5rem 0.4rem;
+  border-radius: 10px;
+  border: none;
+  /* background: transparent; */
+}
+
+.card-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.card-details div {
+  padding: 0.2rem;
+}
+
+.card-form {
+  width: 600px;
+  background: #fff;
+  border-radius: 10px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 60%;
+  z-index: -1;
+}
+
+.card-creator {
+  width: 100%;
+  padding: 1rem 2rem;
+}
+.card-creator p {
+  margin-bottom: 0.3rem;
+}
+
+.card-creator input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.card-btn {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #0055d4;
+  color: #fff;
+}
