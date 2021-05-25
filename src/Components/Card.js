@@ -1,9 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import chip from "../images/chip.png";
-import cardType from "../images/mastercard.png";
-import backgroundImage from "../images/6.jpeg";
+import cardStyles from "../utils/data";
 
 const Card = () => {
+  const [number, setNumber] = useState("");
+  const [cardType, setCardType] = useState("");
+
+  const getCardType = (cardNum) => {
+    var payCardType = "";
+    var regexMap = [
+      { regEx: /^4[0-9]{5}/gi, cardType: "visa" },
+      { regEx: /^5[1-5][0-9]{4}/gi, cardType: "mastercard" },
+      { regEx: /^3[47][0-9]{3}/gi, cardType: "amex" },
+      { regEx: /^(5[06-8]\d{4}|6\d{5})/gi, cardType: "maestro" },
+    ];
+
+    for (var j = 0; j < regexMap.length; j++) {
+      if (cardNum.match(regexMap[j].regEx)) {
+        payCardType = regexMap[j].cardType;
+        break;
+      }
+    }
+
+    if (
+      cardNum.indexOf("50") === 0 ||
+      cardNum.indexOf("60") === 0 ||
+      cardNum.indexOf("65") === 0
+    ) {
+      var g = "508500-508999|606985-607984|608001-608500|652150-653149";
+      var i = g.split("|");
+      for (var d = 0; d < i.length; d++) {
+        var c = parseInt(i[d].split("-")[0], 10);
+        var f = parseInt(i[d].split("-")[1], 10);
+        if (
+          cardNum.substr(0, 6) >= c &&
+          cardNum.substr(0, 6) <= f &&
+          cardNum.length >= 6
+        ) {
+          payCardType = "rupay";
+          break;
+        }
+      }
+    }
+    // console.log(payCardType);
+    setCardType(payCardType);
+    return payCardType;
+  };
+
+  const takeNumber = (e) => {
+    setNumber(e.target.value);
+    getCardType(number);
+  };
+
   return (
     <div className="cover">
       <div className="card">
@@ -11,12 +59,10 @@ const Card = () => {
           <div className="card-img">
             <img src={chip} alt="Card Chip" />
           </div>
-          <div className="card-img">
-            <img src={cardType} alt="Card Type" />
-          </div>
+          <div className="card-img">{cardType}</div>
         </div>
         <div className="card-number">
-          <input type="text" />
+          <input type="tel" value={number} placeholder="#### #### #### ####" />
         </div>
         <div className="card-details">
           <div className="hoder-name">
@@ -33,7 +79,7 @@ const Card = () => {
       <form className="card-form">
         <div className="card-creator">
           <p>Card Number</p>
-          <input type="text" />
+          <input type="text" onChange={takeNumber} />
         </div>
         <div className="card-creator">
           <p>Card Name</p>

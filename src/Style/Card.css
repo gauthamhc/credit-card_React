@@ -68,7 +68,9 @@ img {
   padding: 0.5rem 0.4rem;
   border-radius: 10px;
   border: none;
-  /* background: transparent; */
+  background: transparent;
+  font-size: 1.2rem;
+  color: #fff;
 }
 
 .card-details {
